@@ -1,0 +1,863 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+
+    <meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
+        <title>tools.unknownrate - Gunfolds Package 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Gunfolds Package 1.0.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  
+  <span class="sidebar-brand-text">Gunfolds Package 1.0.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules.html">gunfolds</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tools.html">tools package</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <h1>Source code for tools.unknownrate</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot; BFS implementation of subgraph and supergraph Gu to G1 algorithm &quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">gunfolds.tools.bfutils</span> <span class="k">as</span> <span class="nn">bfu</span>
+<span class="kn">from</span> <span class="nn">gunfolds.tools.conversions</span> <span class="kn">import</span> <span class="n">g2num</span><span class="p">,</span> <span class="n">ug2num</span><span class="p">,</span> <span class="n">num2CG</span>
+<span class="kn">import</span> <span class="nn">gunfolds.tools.graphkit</span> <span class="k">as</span> <span class="nn">gk</span>
+<span class="kn">import</span> <span class="nn">gunfolds.tools.simpleloops</span> <span class="k">as</span> <span class="nn">sls</span>
+<span class="kn">from</span> <span class="nn">gunfolds.tools</span> <span class="kn">import</span> <span class="n">load_data</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">combinations</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">operator</span>
+<span class="kn">from</span> <span class="nn">progressbar</span> <span class="kn">import</span> <span class="n">ProgressBar</span><span class="p">,</span> <span class="n">Bar</span>
+
+
+
+<div class="viewcode-block" id="prune_conflicts"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.prune_conflicts">[docs]</a><span class="k">def</span> <span class="nf">prune_conflicts</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">elist</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;checks if adding an edge from the list to graph g causes a</span>
+<span class="sd">    conflict with respect to H and if it does removes the edge</span>
+<span class="sd">    from the list</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">    - `H`: the undersampled graph</span>
+<span class="sd">    - `g`: a graph under construction</span>
+<span class="sd">    - `elist`: list of edges to check</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">elist</span><span class="p">:</span>
+        <span class="n">gk</span><span class="o">.</span><span class="n">addanedge</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">bfu</span><span class="o">.</span><span class="n">call_u_conflicts</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">H</span><span class="p">):</span>
+            <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="n">gk</span><span class="o">.</span><span class="n">delanedge</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">l</span></div>
+
+
+<div class="viewcode-block" id="e2num"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.e2num">[docs]</a><span class="k">def</span> <span class="nf">e2num</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">n</span> <span class="o">+</span> <span class="n">n</span> <span class="o">-</span> <span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">n</span> <span class="o">-</span> <span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span></div>
+
+
+<div class="viewcode-block" id="le2num"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.le2num">[docs]</a><span class="k">def</span> <span class="nf">le2num</span><span class="p">(</span><span class="n">elist</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">elist</span><span class="p">:</span>
+        <span class="n">num</span> <span class="o">|=</span> <span class="n">e2num</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">num</span></div>
+
+
+<div class="viewcode-block" id="ekey2e"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.ekey2e">[docs]</a><span class="k">def</span> <span class="nf">ekey2e</span><span class="p">(</span><span class="n">ekey</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">n</span> <span class="o">-</span> <span class="n">ekey</span> <span class="o">.</span><span class="n">bit_length</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">idx</span><span class="p">])</span>
+    <span class="k">return</span> <span class="p">(</span><span class="s1">&#39;</span><span class="si">%i</span><span class="s1"> </span><span class="si">%i</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">idx</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="cacheconflicts"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.cacheconflicts">[docs]</a><span class="k">def</span> <span class="nf">cacheconflicts</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">cache</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Given a number representation of a graph and an iterable of</span>
+<span class="sd">    conflicting subgraphs return True if the graph conflicts with any</span>
+<span class="sd">    of them and false otherwise</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">    - `num`: the number representation of a graph</span>
+<span class="sd">    - `cache`: an iterable of number representations of conflicting</span>
+<span class="sd">      graphs</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">conflict</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cache</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">num</span> <span class="o">&amp;</span> <span class="n">c</span> <span class="o">==</span> <span class="n">c</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="nobar"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.nobar">[docs]</a><span class="k">class</span> <span class="nc">nobar</span><span class="p">:</span>
+
+<div class="viewcode-block" id="nobar.update"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.nobar.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="nobar.finish"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.nobar.finish">[docs]</a>    <span class="k">def</span> <span class="nf">finish</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">None</span></div></div>
+
+
+<div class="viewcode-block" id="start_progress_bar"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.start_progress_bar">[docs]</a><span class="k">def</span> <span class="nf">start_progress_bar</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="n">pbar</span> <span class="o">=</span> <span class="n">ProgressBar</span><span class="p">(</span><span class="n">widgets</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%3s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="nb">iter</span><span class="p">)</span> <span class="o">+</span>
+                                <span class="s1">&#39;</span><span class="si">%10s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="p">,</span>
+                                <span class="n">Bar</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">),</span> <span class="s1">&#39; &#39;</span><span class="p">],</span>
+                        <span class="n">maxval</span><span class="o">=</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pbar</span> <span class="o">=</span> <span class="n">nobar</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">pbar</span></div>
+
+
+<div class="viewcode-block" id="add2set_loop"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.add2set_loop">[docs]</a><span class="k">def</span> <span class="nf">add2set_loop</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">ccf</span><span class="p">,</span> <span class="nb">iter</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">capsize</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">currsize</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+    <span class="n">n2</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="n">n</span>
+    <span class="n">dsr</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">ss</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="n">pbar</span> <span class="o">=</span> <span class="n">start_progress_bar</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ds</span><span class="p">),</span> <span class="n">verbose</span><span class="o">=</span> <span class="n">verbose</span><span class="p">)</span>
+
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">gnum</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">:</span>
+        <span class="n">c</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="n">gset</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="n">eset</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">sloop</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">[</span><span class="n">gnum</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">sloop</span> <span class="o">&amp;</span> <span class="n">gnum</span> <span class="o">==</span> <span class="n">sloop</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">num</span> <span class="o">=</span> <span class="n">sloop</span> <span class="o">|</span> <span class="n">gnum</span>
+            <span class="k">if</span> <span class="n">sloop</span> <span class="ow">in</span> <span class="n">ccf</span> <span class="ow">and</span> <span class="n">skip_conflictors</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">ccf</span><span class="p">[</span><span class="n">sloop</span><span class="p">]):</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+                <span class="n">g</span> <span class="o">=</span> <span class="n">num2CG</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">bfu</span><span class="o">.</span><span class="n">call_u_conflicts</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">H</span><span class="p">):</span>
+                    <span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+                    <span class="n">gset</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">num</span><span class="p">,</span> <span class="n">sloop</span><span class="p">))</span>
+                    <span class="n">eset</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">sloop</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">bfu</span><span class="o">.</span><span class="n">call_u_equals</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">H</span><span class="p">):</span>
+                        <span class="n">ss</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">capsize</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ss</span><span class="p">)</span> <span class="o">+</span> <span class="n">currsize</span><span class="p">:</span>
+                            <span class="k">return</span> <span class="n">dsr</span><span class="p">,</span> <span class="n">ss</span>
+
+        <span class="k">for</span> <span class="n">gn</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">gset</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">cp</span><span class="p">:</span>
+                <span class="n">dsr</span><span class="p">[</span><span class="n">gn</span><span class="p">]</span> <span class="o">=</span> <span class="n">eset</span> <span class="o">-</span> <span class="n">cp</span><span class="p">[</span><span class="n">e</span><span class="p">]</span> <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="n">e</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">dsr</span><span class="p">[</span><span class="n">gn</span><span class="p">]</span> <span class="o">=</span> <span class="n">eset</span> <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="n">e</span><span class="p">])</span>
+
+    <span class="n">pbar</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">dsr</span><span class="p">,</span> <span class="n">ss</span></div>
+
+
+<div class="viewcode-block" id="add2set_"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.add2set_">[docs]</a><span class="k">def</span> <span class="nf">add2set_</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">ccf</span><span class="p">,</span> <span class="nb">iter</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+    <span class="n">n2</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="n">n</span>
+    <span class="n">dsr</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">ss</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="n">pbar</span> <span class="o">=</span> <span class="n">start_progress_bar</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ds</span><span class="p">),</span> <span class="n">verbose</span><span class="o">=</span> <span class="n">verbose</span><span class="p">)</span>
+
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">gnum</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">:</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">num2CG</span><span class="p">(</span><span class="n">gnum</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+        <span class="n">c</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="n">glist</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">elist</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">eset</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">[</span><span class="n">gnum</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">g</span><span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]]:</span>
+                <span class="n">gk</span><span class="o">.</span><span class="n">addanedge</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+                <span class="n">num</span> <span class="o">=</span> <span class="n">g2num</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+                <span class="n">ekey</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">n2</span> <span class="o">-</span> <span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">n</span> <span class="o">-</span> <span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+                <span class="k">if</span> <span class="n">ekey</span> <span class="ow">in</span> <span class="n">ccf</span> <span class="ow">and</span> <span class="n">skip_conflictors</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">ccf</span><span class="p">[</span><span class="n">ekey</span><span class="p">]):</span>
+                    <span class="n">gk</span><span class="o">.</span><span class="n">delanedge</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+                    <span class="k">continue</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+                    <span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">bfu</span><span class="o">.</span><span class="n">call_u_conflicts</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">H</span><span class="p">):</span>
+                        <span class="c1"># cf, gl2 = bfu.call_u_conflicts2(g, H)</span>
+                        <span class="c1"># if not cf:</span>
+                        <span class="n">glist</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">num</span><span class="p">,</span> <span class="n">ekey</span><span class="p">))</span>
+                        <span class="n">elist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                        <span class="n">eset</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ekey</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">bfu</span><span class="o">.</span><span class="n">call_u_equals</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">H</span><span class="p">):</span>
+                            <span class="n">ss</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+                            <span class="c1"># if bfu.call_u_equals2(g, gl2, H): ss.add(num)</span>
+                        <span class="k">if</span> <span class="n">capsize</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ss</span><span class="p">):</span>
+                            <span class="k">break</span>
+                <span class="n">gk</span><span class="o">.</span><span class="n">delanedge</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">gn</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">glist</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">cp</span><span class="p">:</span>
+                <span class="n">dsr</span><span class="p">[</span><span class="n">gn</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">ekey2e</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">eset</span> <span class="o">-</span> <span class="n">cp</span><span class="p">[</span><span class="n">e</span><span class="p">]]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">dsr</span><span class="p">[</span><span class="n">gn</span><span class="p">]</span> <span class="o">=</span> <span class="n">elist</span>
+        <span class="k">if</span> <span class="n">capsize</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ss</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">dsr</span><span class="p">,</span> <span class="n">ss</span>
+
+    <span class="n">pbar</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">dsr</span><span class="p">,</span> <span class="n">ss</span></div>
+
+
+<div class="viewcode-block" id="skip_conflictors"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.skip_conflictors">[docs]</a><span class="k">def</span> <span class="nf">skip_conflictors</span><span class="p">(</span><span class="n">gnum</span><span class="p">,</span> <span class="n">ccf</span><span class="p">):</span>
+    <span class="n">pss</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">for</span> <span class="n">xx</span> <span class="ow">in</span> <span class="n">ccf</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">xx</span> <span class="o">&amp;</span> <span class="n">gnum</span> <span class="o">==</span> <span class="n">xx</span><span class="p">:</span>
+            <span class="n">pss</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">break</span>
+    <span class="k">return</span> <span class="n">pss</span></div>
+
+
+<div class="viewcode-block" id="bconflictor"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.bconflictor">[docs]</a><span class="k">def</span> <span class="nf">bconflictor</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">H</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">H</span><span class="p">:</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">e2num</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">n</span><span class="p">)</span> <span class="o">|</span> <span class="n">e2num</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">n</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">s</span></div>
+
+
+<div class="viewcode-block" id="conflictor"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.conflictor">[docs]</a><span class="k">def</span> <span class="nf">conflictor</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">H</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">pairs</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+        <span class="n">ekey</span> <span class="o">=</span> <span class="n">e2num</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">ekey</span> <span class="o">|</span> <span class="n">e2num</span><span class="p">((</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">n</span><span class="p">),</span>
+                <span class="n">ekey</span> <span class="o">|</span> <span class="n">e2num</span><span class="p">((</span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">n</span><span class="p">)]</span>
+
+    <span class="k">def</span> <span class="nf">trios</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">H</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">H</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">e2num</span><span class="p">((</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v</span><span class="p">),</span> <span class="n">n</span><span class="p">)</span> <span class="o">|</span>
+                      <span class="n">e2num</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">n</span><span class="p">)</span> <span class="o">|</span>
+                      <span class="n">e2num</span><span class="p">((</span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">n</span><span class="p">))</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">e2num</span><span class="p">((</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">n</span><span class="p">)</span> <span class="o">|</span>
+                      <span class="n">e2num</span><span class="p">((</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v</span><span class="p">),</span> <span class="n">n</span><span class="p">)</span> <span class="o">|</span>
+                      <span class="n">e2num</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">n</span><span class="p">))</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">e2num</span><span class="p">((</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v</span><span class="p">),</span> <span class="n">n</span><span class="p">)</span> <span class="o">|</span>
+                      <span class="n">e2num</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="p">),</span> <span class="n">n</span><span class="p">)</span> <span class="o">|</span>
+                      <span class="n">e2num</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">n</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">s</span>
+
+    <span class="k">return</span> <span class="n">trios</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">pairs</span><span class="p">(</span><span class="n">e</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="conflictor_set"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.conflictor_set">[docs]</a><span class="k">def</span> <span class="nf">conflictor_set</span><span class="p">(</span><span class="n">H</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">gk</span><span class="o">.</span><span class="n">inedgelist</span><span class="p">(</span><span class="n">H</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">|</span> <span class="n">conflictor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">gk</span><span class="o">.</span><span class="n">inbedgelist</span><span class="p">(</span><span class="n">H</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">|</span> <span class="n">bconflictor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">s</span></div>
+
+
+<div class="viewcode-block" id="conflictors"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.conflictors">[docs]</a><span class="k">def</span> <span class="nf">conflictors</span><span class="p">(</span><span class="n">H</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">conflictor_set</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">or_</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="n">num</span><span class="p">))</span><span class="o">-</span><span class="mi">2</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">num</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="p">:</span>
+            <span class="n">ds</span><span class="p">[</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">s</span> <span class="k">if</span> <span class="n">x</span><span class="o">&amp;</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">ds</span></div>
+
+
+<div class="viewcode-block" id="prune_loops"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.prune_loops">[docs]</a><span class="k">def</span> <span class="nf">prune_loops</span><span class="p">(</span><span class="n">loops</span><span class="p">,</span> <span class="n">H</span><span class="p">):</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">loop</span> <span class="ow">in</span> <span class="n">loops</span><span class="p">:</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">num2CG</span><span class="p">(</span><span class="n">loop</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">bfu</span><span class="o">.</span><span class="n">call_u_conflicts_d</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">H</span><span class="p">):</span>
+            <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">l</span></div>
+
+
+<div class="viewcode-block" id="lconflictors"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.lconflictors">[docs]</a><span class="k">def</span> <span class="nf">lconflictors</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">sloops</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">sloops</span><span class="p">:</span>
+        <span class="n">sloops</span> <span class="o">=</span> <span class="n">prune_loops</span><span class="p">(</span><span class="n">allsloops</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">H</span><span class="p">)),</span> <span class="n">H</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">conflictor_set</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">or_</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="n">num</span><span class="p">))</span><span class="o">-</span><span class="mi">2</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">num</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="p">:</span>
+            <span class="n">cset</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">s</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="p">)]</span>
+            <span class="k">for</span> <span class="n">sloop</span> <span class="ow">in</span> <span class="n">sloops</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">sloop</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="p">:</span>
+                    <span class="n">ds</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">sloop</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">cset</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ds</span></div>
+
+
+<div class="viewcode-block" id="confpairs"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.confpairs">[docs]</a><span class="k">def</span> <span class="nf">confpairs</span><span class="p">(</span><span class="n">H</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="p">{</span><span class="n">n</span><span class="p">:</span> <span class="p">{}</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">H</span><span class="p">}</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="n">edges</span> <span class="o">=</span> <span class="n">gk</span><span class="o">.</span><span class="n">edgelist</span><span class="p">(</span><span class="n">gk</span><span class="o">.</span><span class="n">complement</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="n">prune_conflicts</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">edges</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">combinations</span><span class="p">(</span><span class="n">edges</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+        <span class="n">gk</span><span class="o">.</span><span class="n">addedges</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">bfu</span><span class="o">.</span><span class="n">call_u_conflicts</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">H</span><span class="p">):</span>
+            <span class="n">n1</span> <span class="o">=</span> <span class="n">e2num</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">n</span><span class="p">)</span>
+            <span class="n">n2</span> <span class="o">=</span> <span class="n">e2num</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">n</span><span class="p">)</span>
+            <span class="n">d</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="nb">set</span><span class="p">())</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">n2</span><span class="p">)</span>
+            <span class="n">d</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">n2</span><span class="p">,</span> <span class="nb">set</span><span class="p">())</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">n1</span><span class="p">)</span>
+        <span class="n">gk</span><span class="o">.</span><span class="n">deledges</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">d</span></div>
+
+
+<div class="viewcode-block" id="lconfpairs"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.lconfpairs">[docs]</a><span class="k">def</span> <span class="nf">lconfpairs</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">cap</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">sloops</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">sloops</span><span class="p">:</span>
+        <span class="n">sloops</span> <span class="o">=</span> <span class="n">prune_loops</span><span class="p">(</span><span class="n">allsloops</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">H</span><span class="p">)),</span> <span class="n">H</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">combinations</span><span class="p">(</span><span class="n">sloops</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">num2CG</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">|</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">n</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">bfu</span><span class="o">.</span><span class="n">call_u_conflicts</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">H</span><span class="p">):</span>
+            <span class="n">d</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">set</span><span class="p">())</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">d</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">set</span><span class="p">())</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">c</span> <span class="o">&gt;=</span> <span class="n">cap</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="n">c</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">d</span></div>
+
+
+<div class="viewcode-block" id="iteqclass"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.iteqclass">[docs]</a><span class="k">def</span> <span class="nf">iteqclass</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Find all graphs in the same equivalence class with respect to</span>
+<span class="sd">    graph H and any undesampling rate.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">bfu</span><span class="o">.</span><span class="n">is_sclique</span><span class="p">(</span><span class="n">H</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;not running on superclique&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="p">{</span><span class="n">n</span><span class="p">:</span> <span class="p">{}</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">H</span><span class="p">}</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">Hnum</span> <span class="o">=</span> <span class="n">ug2num</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">Hnum</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Hnum</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="n">cp</span> <span class="o">=</span> <span class="n">confpairs</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+    <span class="n">ccf</span> <span class="o">=</span> <span class="n">conflictors</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+
+    <span class="n">edges</span> <span class="o">=</span> <span class="n">gk</span><span class="o">.</span><span class="n">edgelist</span><span class="p">(</span><span class="n">gk</span><span class="o">.</span><span class="n">complement</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="p">{</span><span class="n">g2num</span><span class="p">(</span><span class="n">g</span><span class="p">):</span> <span class="n">edges</span><span class="p">}</span>
+
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;</span><span class="si">%3s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="s1">&#39;i&#39;</span><span class="o">+</span><span class="s1">&#39;</span><span class="si">%10s</span><span class="s1">&#39;</span><span class="o">%</span><span class="s1">&#39; graphs&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">H</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">):</span>
+        <span class="n">ds</span><span class="p">,</span> <span class="n">ss</span> <span class="o">=</span> <span class="n">add2set_</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">ccf</span><span class="p">,</span> <span class="nb">iter</span><span class="o">=</span><span class="n">i</span><span class="p">,</span>
+                            <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
+                            <span class="n">capsize</span><span class="o">=</span><span class="n">capsize</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">|</span> <span class="n">ss</span>
+        <span class="k">if</span> <span class="n">capsize</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ss</span><span class="p">):</span>
+            <span class="k">break</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">ds</span><span class="p">:</span>
+            <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">s</span></div>
+
+
+<div class="viewcode-block" id="liteqclass"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.liteqclass">[docs]</a><span class="k">def</span> <span class="nf">liteqclass</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">asl</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Find all graphs in the same equivalence class with respect to</span>
+<span class="sd">    graph H and any undesampling rate.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">bfu</span><span class="o">.</span><span class="n">is_sclique</span><span class="p">(</span><span class="n">H</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;not running on superclique&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">set</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="p">{</span><span class="n">n</span><span class="p">:</span> <span class="p">{}</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">H</span><span class="p">}</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="n">cp</span> <span class="o">=</span> <span class="n">lconfpairs</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">asl</span><span class="p">:</span>
+        <span class="n">sloops</span> <span class="o">=</span> <span class="n">asl</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">sloops</span> <span class="o">=</span> <span class="n">prune_loops</span><span class="p">(</span><span class="n">allsloops</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">H</span><span class="p">)),</span> <span class="n">H</span><span class="p">)</span>
+
+    <span class="n">ccf</span> <span class="o">=</span> <span class="n">lconflictors</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">sloops</span><span class="o">=</span><span class="n">sloops</span><span class="p">)</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="n">sloops</span><span class="p">}</span>
+
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%3s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="s1">&#39;i&#39;</span><span class="o">+</span><span class="s1">&#39;</span><span class="si">%10s</span><span class="s1">&#39;</span><span class="o">%</span><span class="s1">&#39; graphs&#39;</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">ds</span><span class="p">:</span>
+        <span class="n">ds</span><span class="p">,</span> <span class="n">ss</span> <span class="o">=</span> <span class="n">add2set_loop</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">ccf</span><span class="p">,</span> <span class="nb">iter</span><span class="o">=</span><span class="n">i</span><span class="p">,</span>
+                              <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
+                              <span class="n">capsize</span><span class="o">=</span><span class="n">capsize</span><span class="p">,</span>
+                              <span class="n">currsize</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">|</span> <span class="n">ss</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">capsize</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+            <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">s</span></div>
+
+
+<div class="viewcode-block" id="skip_conflict"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.skip_conflict">[docs]</a><span class="k">def</span> <span class="nf">skip_conflict</span><span class="p">(</span><span class="n">g1</span><span class="p">,</span> <span class="n">g2</span><span class="p">,</span> <span class="n">ds</span><span class="p">):</span>
+    <span class="n">pss</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">for</span> <span class="n">ekey</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">g1</span> <span class="o">&amp;</span> <span class="n">ekey</span><span class="p">)</span> <span class="o">==</span> <span class="n">ekey</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">ekey</span> <span class="ow">in</span> <span class="n">ds</span> <span class="ow">and</span> <span class="n">cacheconflicts</span><span class="p">(</span><span class="n">g2</span><span class="p">,</span> <span class="n">ds</span><span class="p">[</span><span class="n">ekey</span><span class="p">]):</span>
+                <span class="n">pss</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">break</span>
+    <span class="k">return</span> <span class="n">pss</span></div>
+
+
+<div class="viewcode-block" id="loop2graph"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.loop2graph">[docs]</a><span class="k">def</span> <span class="nf">loop2graph</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="p">{}</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)}</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">g</span><span class="p">[</span><span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="n">l</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">g</span><span class="p">[</span><span class="n">l</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]][</span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">g</span></div>
+
+
+<div class="viewcode-block" id="perm_circular"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.perm_circular">[docs]</a><span class="k">def</span> <span class="nf">perm_circular</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">cp</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">cp</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Delay import until its used</span>
+        <span class="n">cp</span> <span class="o">=</span> <span class="n">load_data</span><span class="o">.</span><span class="n">circp</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">cp</span><span class="p">[</span><span class="n">n</span><span class="p">]:</span>
+        <span class="n">r</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">e</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">r</span></div>
+
+
+<div class="viewcode-block" id="gen_loops"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.gen_loops">[docs]</a><span class="k">def</span> <span class="nf">gen_loops</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">combinations</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">perm_circular</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">s</span></div>
+
+
+<div class="viewcode-block" id="allsloops"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.allsloops">[docs]</a><span class="k">def</span> <span class="nf">allsloops</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">asl</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">asl</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">asl</span> <span class="o">=</span> <span class="n">load_data</span><span class="o">.</span><span class="n">alloops</span>
+    <span class="k">if</span> <span class="n">asl</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">asl</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="n">gen_loops</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">g2num</span><span class="p">(</span><span class="n">loop2graph</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">n</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">s</span></div>
+
+
+<div class="viewcode-block" id="reverse"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.reverse">[docs]</a><span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="n">g</span> <span class="o">=</span> <span class="n">gk</span><span class="o">.</span><span class="n">superclique</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">sloops</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">allsloops</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+
+    <span class="n">ds</span> <span class="o">=</span> <span class="p">{</span><span class="n">g2num</span><span class="p">(</span><span class="n">g</span><span class="p">):</span> <span class="n">sloops</span><span class="p">}</span>
+
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%3s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="s1">&#39;i&#39;</span><span class="o">+</span><span class="s1">&#39;</span><span class="si">%10s</span><span class="s1">&#39;</span><span class="o">%</span><span class="s1">&#39; graphs&#39;</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">ds</span><span class="p">:</span>
+        <span class="n">ds</span><span class="p">,</span> <span class="n">ss</span> <span class="o">=</span> <span class="n">del_loop</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="nb">iter</span><span class="o">=</span><span class="n">i</span><span class="p">,</span>
+                          <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
+                          <span class="n">capsize</span><span class="o">=</span><span class="n">capsize</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">|</span> <span class="n">ss</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">capsize</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+            <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">s</span></div>
+
+<span class="c1"># ----------------------</span>
+
+
+<div class="viewcode-block" id="build_loop_step"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.build_loop_step">[docs]</a><span class="k">def</span> <span class="nf">build_loop_step</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">loop</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="nb">iter</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">n2</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="n">n</span>
+    <span class="n">dsr</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">ss</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="n">pbar</span> <span class="o">=</span> <span class="n">start_progress_bar</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ds</span><span class="p">))</span>
+
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">gnum</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">:</span>
+        <span class="n">c</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="n">gset</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="n">eset</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">sloop</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">[</span><span class="n">gnum</span><span class="p">]:</span>
+            <span class="n">num</span> <span class="o">=</span> <span class="n">sloop</span> <span class="o">|</span> <span class="n">gnum</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+                <span class="n">g</span> <span class="o">=</span> <span class="n">num2CG</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">bfu</span><span class="o">.</span><span class="n">forms_loop</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">loop</span><span class="p">):</span>
+                    <span class="n">ss</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">gset</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">num</span><span class="p">,</span> <span class="n">sloop</span><span class="p">))</span>
+                    <span class="n">eset</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">sloop</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">gn</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">gset</span><span class="p">:</span>
+            <span class="n">dsr</span><span class="p">[</span><span class="n">gn</span><span class="p">]</span> <span class="o">=</span> <span class="n">eset</span> <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="n">e</span><span class="p">])</span>
+
+    <span class="n">pbar</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">dsr</span><span class="p">,</span> <span class="n">ss</span></div>
+
+
+<div class="viewcode-block" id="forward_loop_match"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.forward_loop_match">[docs]</a><span class="k">def</span> <span class="nf">forward_loop_match</span><span class="p">(</span><span class="n">loop</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;start with an empty graph and keep adding simple loops until</span>
+<span class="sd">    the loop is generated at some undersampling rate</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">    - `loop`: binary encoding of the loop</span>
+<span class="sd">    - `n`: number of nodes in the graph</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">sloops</span> <span class="o">=</span> <span class="n">allsloops</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="n">sloops</span><span class="p">}</span>
+
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">ds</span><span class="p">:</span>
+        <span class="n">ds</span><span class="p">,</span> <span class="n">ss</span> <span class="o">=</span> <span class="n">build_loop_step</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">loop</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="nb">iter</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">|</span> <span class="n">ss</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">s</span></div>
+
+
+<div class="viewcode-block" id="delAloop"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.delAloop">[docs]</a><span class="k">def</span> <span class="nf">delAloop</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">loop</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="n">g2num</span><span class="p">(</span><span class="n">loop2graph</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sls</span><span class="o">.</span><span class="n">simple_loops</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="n">num</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">l</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">num</span> <span class="o">==</span> <span class="n">loop</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">loop</span><span class="p">,</span> <span class="s1">&#39;: &#39;</span><span class="p">,</span>  <span class="n">l</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">num2CG</span><span class="p">(</span><span class="n">reduce</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">or_</span><span class="p">,</span> <span class="n">l</span><span class="p">),</span> <span class="n">n</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="reverse_loop_match"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.reverse_loop_match">[docs]</a><span class="k">def</span> <span class="nf">reverse_loop_match</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">loop</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;start with a graph and keep removing loops while the loop is still matched</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">    - `g`: graph that generates the loop</span>
+<span class="sd">    - `loop`: the reference loop</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">prune</span><span class="p">(</span><span class="n">g</span><span class="p">):</span>
+        <span class="n">numh</span> <span class="o">=</span> <span class="n">g2num</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+        <span class="n">cannotprune</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">sls</span><span class="o">.</span><span class="n">simple_loops</span><span class="p">(</span><span class="n">gk</span><span class="o">.</span><span class="n">digonly</span><span class="p">(</span><span class="n">g</span><span class="p">),</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="n">gg</span> <span class="o">=</span> <span class="n">delAloop</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">g2num</span><span class="p">(</span><span class="n">loop2graph</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">n</span><span class="p">)))</span>
+            <span class="k">if</span> <span class="n">bfu</span><span class="o">.</span><span class="n">forms_loop</span><span class="p">(</span><span class="n">gg</span><span class="p">,</span> <span class="n">loop</span><span class="p">):</span>
+                <span class="n">cannotprune</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="n">prune</span><span class="p">(</span><span class="n">gg</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cannotprune</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">)</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+    <span class="n">prune</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">s</span></div>
+
+
+<div class="viewcode-block" id="reverse_edge_match"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.reverse_edge_match">[docs]</a><span class="k">def</span> <span class="nf">reverse_edge_match</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">loop</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;start with a graph and keep removing loops while the loop is still matched</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">    - `g`: graph that generates the loop</span>
+<span class="sd">    - `loop`: the reference loop</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">prune</span><span class="p">(</span><span class="n">g</span><span class="p">):</span>
+        <span class="n">numh</span> <span class="o">=</span> <span class="n">g2num</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+        <span class="n">cannotprune</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">gk</span><span class="o">.</span><span class="n">edgelist</span><span class="p">(</span><span class="n">gk</span><span class="o">.</span><span class="n">digonly</span><span class="p">(</span><span class="n">g</span><span class="p">)):</span>
+            <span class="n">gk</span><span class="o">.</span><span class="n">delanedge</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">bfu</span><span class="o">.</span><span class="n">forms_loop</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">loop</span><span class="p">):</span>
+                <span class="n">cannotprune</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="n">prune</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+            <span class="n">gk</span><span class="o">.</span><span class="n">addanedge</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cannotprune</span><span class="p">:</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">g2num</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+
+    <span class="n">prune</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">s</span></div>
+
+
+<div class="viewcode-block" id="matchAloop"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.matchAloop">[docs]</a><span class="k">def</span> <span class="nf">matchAloop</span><span class="p">(</span><span class="n">loop</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;returns a set of minimal graphs that generate this loop</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">    - `loop`: binary encoding of the loop</span>
+<span class="sd">    - `n`: number of nodes in the graph</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="n">forward_loop_match</span><span class="p">(</span><span class="n">loop</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">|</span> <span class="n">reverse_edge_match</span><span class="p">(</span><span class="n">num2CG</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="n">loop</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">s</span></div>
+
+<span class="c1"># ----------------------</span>
+
+
+<div class="viewcode-block" id="del_loop"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.del_loop">[docs]</a><span class="k">def</span> <span class="nf">del_loop</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="nb">iter</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+
+    <span class="n">dsr</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">ss</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="nb">iter</span><span class="p">,)</span>
+    <span class="k">for</span> <span class="n">gnum</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">:</span>
+        <span class="n">gset</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">sloop</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">[</span><span class="n">gnum</span><span class="p">]:</span>
+            <span class="n">rset</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="n">gnum</span><span class="p">]</span> <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="n">sloop</span><span class="p">])</span>
+            <span class="n">num</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">or_</span><span class="p">,</span> <span class="n">rset</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+                <span class="n">g</span> <span class="o">=</span> <span class="n">num2CG</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">bfu</span><span class="o">.</span><span class="n">overshoot</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">H</span><span class="p">):</span>
+                    <span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+                    <span class="n">gset</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">num</span><span class="p">,</span> <span class="n">rset</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">gset</span> <span class="o">==</span> <span class="p">[]:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,)</span>
+            <span class="n">ss</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">gnum</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">gn</span> <span class="ow">in</span> <span class="n">gset</span><span class="p">:</span>
+            <span class="n">dsr</span><span class="p">[</span><span class="n">gn</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">gn</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dsr</span><span class="p">,</span> <span class="n">ss</span></div>
+
+
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../tools.html#tools.unknownrate.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">gk</span><span class="o">.</span><span class="n">ringmore</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="n">bfu</span><span class="o">.</span><span class="n">undersample</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">ss</span> <span class="o">=</span> <span class="n">liteqclass</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ss</span><span class="p">)</span></div>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022, Girish
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/scripts/furo.js"></script>
+    </body>
+</html>
